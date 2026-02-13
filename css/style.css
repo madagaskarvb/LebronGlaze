@@ -1,0 +1,434 @@
+/* Font Face Declarations */
+@font-face {
+    font-family: 'NBA Cavaliers';
+    src: url('../fonts/nba-cavaliers.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'NBA Lakers';
+    src: url('../fonts/nba-lakers.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'NBA Heat';
+    src: url('../fonts/nba-heat.ttf') format('truetype');
+}
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    color: #e0e0e0;
+    background-color: #0a0a0a;
+}
+
+/* Navigation Styles */
+header {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 0 1rem;
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #333;
+}
+
+nav ul li a.active {
+    background-color: #555;
+}
+
+/* Container Styles */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    background-color: #0a0a0a;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    background-color: #0a0a0a;
+}
+
+/* Career Page Styles */
+.career-intro {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    background-color: black;
+    width: 100%;
+    padding: 2rem 20px;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.draft-section {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: white;
+    background-color: #1a1a1a;
+    width: 100%;
+    padding: 2rem 20px;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.cleveland {
+    font-family: 'NBA Cavaliers', Arial, Helvetica, sans-serif;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: gold;
+    background-color: red;
+    width: 100%;
+    padding: 2rem 20px;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.miami {
+    font-family: 'NBA Heat', Arial, Helvetica, sans-serif;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: red;
+    background-color: white;
+    width: 100%;
+    padding: 2rem 20px;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.return_to_cleveland {
+    font-family: 'NBA Cavaliers', Arial, Helvetica, sans-serif;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: gold;
+    background-color: red;
+    width: 100%;
+    padding: 2rem 20px;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.lakers {
+    font-family: 'NBA Lakers', Arial, Helvetica, sans-serif;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: purple;
+    background-color: yellow;
+    width: 100%;
+    padding: 2rem 20px;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Image Styles */
+.career-intro img,
+.draft-section img,
+.cleveland img,
+.miami img,
+.return_to_cleveland img,
+.lakers img {
+    display: block;
+    margin: 1rem auto;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Ventures Page Styles */
+.ventures-hero {
+    text-align: center;
+    padding: 3rem 1rem;
+    background: #1a1a1a;
+    color: white;
+    margin-bottom: 3rem;
+    border-bottom: 2px solid #333;
+}
+
+.ventures-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.ventures-hero p {
+    color: #ccc;
+    font-size: 1.2rem;
+}
+
+.ventures-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 1rem;
+}
+
+.venture-section {
+    background: #1a1a1a;
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid #333;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.venture-section:hover {
+    transform: translateY(-5px);
+    border-color: #555;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+.venture-section h2 {
+    color: #fff;
+    margin-bottom: 1rem;
+    font-size: 1.75rem;
+}
+
+.venture-section p {
+    color: #ccc;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    text-align: justify;
+    text-align-last: center;
+}
+
+.venture-section img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+/* Contacts Page Styles */
+.contacts-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.links-section {
+    background: #1a1a1a;
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid #333;
+    margin-bottom: 3rem;
+}
+
+.links-section h2 {
+    color: #fff;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+}
+
+.links-section ul {
+    list-style: none;
+}
+
+.links-section ul li {
+    margin-bottom: 1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #333;
+}
+
+.links-section ul li:last-child {
+    border-bottom: none;
+}
+
+.links-section ul li a {
+    color: #667eea;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.links-section ul li a:hover {
+    color: #764ba2;
+    text-decoration: underline;
+}
+
+.links-section ul li p {
+    color: #aaa;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    line-height: 1.6;
+}
+
+/* Form Styles */
+.contact-form {
+    background: #1a1a1a;
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid #333;
+}
+
+.contact-form h2 {
+    color: #fff;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #fff;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #333;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #0a0a0a;
+    color: #e0e0e0;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.submit-button {
+    background-color: #667eea;
+    color: white;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-button:hover {
+    background-color: #764ba2;
+    transform: translateY(-2px);
+}
+
+.submit-button:active {
+    transform: translateY(0);
+}
+
+/* Footer */
+footer {
+    background-color: #1a1a1a;
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-top: 3rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+    }
+
+    nav ul li {
+        width: 100%;
+        text-align: center;
+    }
+
+    nav ul li a {
+        display: block;
+        width: 100%;
+    }
+
+    .ventures-hero h1 {
+        font-size: 2rem;
+    }
+
+    .ventures-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+
+    .career-intro {
+        font-size: 1.75rem;
+        padding: 1.5rem 20px;
+    }
+
+    .draft-section {
+        font-size: 1rem;
+        padding: 1.5rem 20px;
+    }
+
+    .cleveland,
+    .miami,
+    .return_to_cleveland,
+    .lakers {
+        font-size: 1rem;
+        padding: 1.5rem 20px;
+    }
+
+    .container,
+    main {
+        padding: 1rem;
+    }
+
+    .venture-section {
+        padding: 1.5rem;
+    }
+
+    .links-section,
+    .contact-form {
+        padding: 1.5rem;
+    }
+}
+
