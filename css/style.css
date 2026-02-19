@@ -1,3 +1,5 @@
+/* CSS VERSION 2.1 - ALTERNATING LAYOUT FIX */
+
 /* Font Face Declarations */
 @font-face {
     font-family: 'NBA Cavaliers';
@@ -223,16 +225,16 @@ main {
     transform: translateY(-5px);
 }
 
-.career-content {
+.career-card .career-content {
     display: flex;
     align-items: center;
     gap: 0;
     padding: 0;
-    min-height: 100vh;
+    min-height: 80vh;
     flex-direction: row;
 }
 
-.career-content.reverse {
+.career-card .career-content.reverse {
     flex-direction: row-reverse !important;
 }
 
@@ -250,7 +252,7 @@ main {
     overflow: hidden;
     border-radius: 0;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-    height: 100vh;
+    height: 80vh;
 }
 
 .career-image img {
@@ -273,11 +275,11 @@ main {
     font-weight: bold;
     color: white;
     background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-    border-left-color: #4a90e2;
+    border-right-color: #4a90e2;
 }
 
 .draft-section:hover {
-    border-left-color: #6bb6ff;
+    border-right-color: #6bb6ff;
 }
 
 .cleveland {
@@ -286,11 +288,11 @@ main {
     font-weight: bold;
     color: gold;
     background: linear-gradient(135deg, #c8102e 0%, #860a1f 100%);
-    border-left-color: gold;
+    border-right-color: gold;
 }
 
 .cleveland:hover {
-    border-left-color: #ffd700;
+    border-right-color: #ffd700;
 }
 
 .miami {
@@ -299,11 +301,7 @@ main {
     font-weight: bold;
     color: red;
     background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
-    border-left-color: #98002e;
-}
-
-.miami:hover {
-    border-left-color: #f9a01b;
+    border-right-color: #98002e;
 }
 
 .return_to_cleveland {
@@ -312,11 +310,11 @@ main {
     font-weight: bold;
     color: gold;
     background: linear-gradient(135deg, #c8102e 0%, #860a1f 100%);
-    border-left-color: gold;
+    border-right-color: gold;
 }
 
 .return_to_cleveland:hover {
-    border-left-color: #ffd700;
+    border-right-color: #ffd700;
 }
 
 .lakers {
@@ -325,12 +323,9 @@ main {
     font-weight: bold;
     color: purple;
     background: linear-gradient(135deg, #fdb927 0%, #552583 100%);
-    border-left-color: #fdb927;
+    border-right-color: #fdb927;
 }
 
-.lakers:hover {
-    border-left-color: #552583;
-}
 
 .career-text h2 {
     margin-bottom: 1.5rem;
@@ -566,7 +561,7 @@ footer {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 480px) {
     nav ul {
         flex-direction: column;
         gap: 0.5rem;
@@ -647,14 +642,14 @@ footer {
         margin-bottom: 2rem;
     }
 
-    .career-content {
-        flex-direction: column;
+    .career-card .career-content {
+        flex-direction: column !important;
         min-height: auto;
         gap: 0;
     }
 
-    .career-content.reverse {
-        flex-direction: column;
+    .career-card .career-content.reverse {
+        flex-direction: column !important;
     }
 
     .career-text {
