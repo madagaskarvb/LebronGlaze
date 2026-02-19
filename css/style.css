@@ -321,7 +321,7 @@ main {
     font-family: 'NBA Lakers', Arial, Helvetica, sans-serif;
     font-size: 2rem;
     font-weight: bold;
-    color: purple;
+    color: #fdb927;
     background: linear-gradient(135deg, #fdb927 0%, #552583 100%);
     border-right-color: #fdb927;
 }
