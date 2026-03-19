@@ -7,7 +7,7 @@ export const merchArray = [
     "price": 16500,
     "colours": ["yellow", "gold", "brown", "wooden"],
     "stock_amount": 15,
-    "img_path": "lebonnybon_pics/merch/lebron_21_yellow.webp"
+    "img_path": "/lebonnybon_pics/merch/lebron_21_yellow.webp"
   },
   {
     "id": 2,
@@ -17,7 +17,7 @@ export const merchArray = [
     "price": 6000,
     "colours": ["gold", "yellow", "purple"],
     "stock_amount": 32,
-    "img_path": "lebonnybon_pics/merch/lebron_lakers-23-24-jersey-yellow.webp"
+    "img_path": "/lebonnybon_pics/merch/lebron_lakers-23-24-jersey-yellow.webp"
   },
   {
     "id": 3,
@@ -27,7 +27,7 @@ export const merchArray = [
     "price": 23000,
     "colours": ["pink", "pearly white", "white", "light blue", "turquoise"],
     "stock_amount": 5,
-    "img_path": "lebonnybon_pics/merch/lebron_22_pink.webp"
+    "img_path": "/lebonnybon_pics/merch/lebron_22_pink.webp"
   },
   {
     "id": 4,
@@ -37,7 +37,7 @@ export const merchArray = [
     "price": 7000,
     "colours": ["purple", "black", "white"],
     "stock_amount": 20,
-    "img_path": "lebonnybon_pics/merch/lebron-lakers-city-jersey-purple.webp"
+    "img_path": "/lebonnybon_pics/merch/lebron-lakers-city-jersey-purple.webp"
   },
   {
     "id": 5,
@@ -47,7 +47,7 @@ export const merchArray = [
     "price": 4500,
     "colours": ["gold", "purple", "white"],
     "stock_amount": 18,
-    "img_path": "lebonnybon_pics/merch/lebron-lakers-shorts.webp"
+    "img_path": "/lebonnybon_pics/merch/lebron-lakers-shorts.webp"
   },
   {
     "id": 6,
@@ -57,7 +57,7 @@ export const merchArray = [
     "price": 3200,
     "colours": ["black", "white", "gold"],
     "stock_amount": 40,
-    "img_path": "lebonnybon_pics/merch/forever-king-shirt.webp"
+    "img_path": "/lebonnybon_pics/merch/forever-king-shirt.webp"
   },
   {
     "id": 7,
@@ -67,7 +67,7 @@ export const merchArray = [
     "price": 2800,
     "colours": ["purple", "gold", "black"],
     "stock_amount": 25,
-    "img_path": "lebonnybon_pics/merch/lebron-lakers-cap.webp"
+    "img_path": "/lebonnybon_pics/merch/lebron-lakers-cap.webp"
   },
   {
     "id": 8,
@@ -77,7 +77,7 @@ export const merchArray = [
     "price": 12000,
     "colours": ["red", "white", "blue"],
     "stock_amount": 12,
-    "img_path": "lebonnybon_pics/merch/lebron-witness-7-bred.webp"
+    "img_path": "/lebonnybon_pics/merch/lebron-witness-7-bred.webp"
   },
   {
     "id": 9,
@@ -87,7 +87,7 @@ export const merchArray = [
     "price": 8500,
     "colours": ["purple", "gold", "charcoal"],
     "stock_amount": 15,
-    "img_path": "lebonnybon_pics/merch/lebron-warmup-hoodie.webp"
+    "img_path": "/lebonnybon_pics/merch/lebron-warmup-hoodie.webp"
   },
   {
     "id": 10,
@@ -97,7 +97,7 @@ export const merchArray = [
     "price": 18000,
     "colours": ["black", "white", "orange"],
     "stock_amount": 8,
-    "img_path": "lebonnybon_pics/merch/lebron-16-black.webp"
+    "img_path": "/lebonnybon_pics/merch/lebron-16-black.webp"
   },
   {
     "id": 11,
@@ -107,7 +107,7 @@ export const merchArray = [
     "price": 7500,
     "colours": ["yellow", "purple", "white"],
     "stock_amount": 22,
-    "img_path": "lebonnybon_pics/merch/lebron-purple-shorts.webp"
+    "img_path": "/lebonnybon_pics/merch/lebron-purple-shorts.webp"
   },
   {
     "id": 12,
@@ -117,6 +117,6 @@ export const merchArray = [
     "price": 1500,
     "colours": ["purple", "gold", "white"],
     "stock_amount": 50,
-    "img_path": "lebonnybon_pics/merch/lebron-crew-socks.webp"
+    "img_path": "/lebonnybon_pics/merch/lebron-crew-socks.webp"
   }
 ]
