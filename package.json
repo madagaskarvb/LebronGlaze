@@ -1,0 +1,13 @@
+{
+  "name": "lebron-fan-site",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "start": "npx serve ."
+  },
+  "devDependencies": {
+    "vitest": "^2.0.0",
+    "fast-check": "^3.22.0"
+  }
+}
