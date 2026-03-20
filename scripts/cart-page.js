@@ -4,15 +4,7 @@
  */
 
 import { Cart_State, loadCart, saveCart, updateBadge } from './cart.js';
-
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
-
-/** Formats a price number as South African Rand, e.g. 6000 → "R 6 000" */
-function formatPrice(amount) {
-  return amount.toLocaleString('ru-RU') + ' ₽';
-}
+import { formatPrice } from './merch.js';
 
 // ---------------------------------------------------------------------------
 // Rendering

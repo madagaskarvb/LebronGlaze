@@ -11,10 +11,7 @@ export let activeCategory = 'all';
 export let activeSortOrder = null; // 'asc' | 'desc' | null
 
 // ── Price formatter ───────────────────────────────────────────────────────
-/**
- * Formats a number as South African Rand with space thousands separator.
- * e.g. 6000 → "R 6 000", 16500 → "R 16 500"
- */
+
 export function formatPrice(amount) {
   return amount.toLocaleString('ru-RU') + ' ₽';
 }
@@ -25,8 +22,8 @@ export function formatPrice(amount) {
  * into #catalog-grid. Also updates #cart-button visibility.
  * @param {Array} [productsOverride] - Optional array to use instead of merchArray (for testing).
  */
-export function renderCatalog(productsOverride) {
-  const source = productsOverride !== undefined ? productsOverride : merchArray;
+export function renderCatalog() {
+  const source = merchArray;
 
   // 1. Filter
   let visible = activeCategory === 'all'
