@@ -59,6 +59,14 @@ export function renderCatalog(productsOverride) {
     btn.addEventListener('click', () => addToCart(Number(btn.dataset.id)));
   });
 
+  grid.querySelectorAll('.card-qty-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const id = Number(btn.dataset.id);
+      if (btn.dataset.action === 'inc') addToCart(id);
+      else removeFromCart(id);
+    });
+  });
+
   // 5. Update cart-button visibility
   updateCartButtonVisibility();
 }
@@ -70,6 +78,18 @@ function productCardTemplate(product) {
        <div class="product-card-img-placeholder" style="display:none;">No Image</div>`
     : `<div class="product-card-img-placeholder">No Image</div>`;
 
+  const key = String(product.id);
+  const qty = Cart_State[key]?.qty ?? 0;
+  const atMax = qty >= product.stock_amount;
+
+  const cartControl = qty > 0
+    ? `<div class="card-qty-control">
+         <button class="card-qty-btn" data-id="${product.id}" data-action="dec" ${qty <= 1 ? 'disabled' : ''}>−</button>
+         <span class="card-qty-value">${qty}</span>
+         <button class="card-qty-btn" data-id="${product.id}" data-action="inc" ${atMax ? 'disabled' : ''}>+</button>
+       </div>`
+    : `<button class="btn-add-cart" data-id="${product.id}">Add to Cart</button>`;
+
   return `
     <article class="product-card" data-id="${product.id}">
       <div class="product-card-img-wrap">
@@ -79,7 +99,7 @@ function productCardTemplate(product) {
         <div class="product-card-name">${product.name}</div>
         <div class="product-card-price">${formatPrice(product.price)}</div>
         <div class="product-card-add">
-          <button class="btn-add-cart" data-id="${product.id}">Add to Cart</button>
+          ${cartControl}
         </div>
       </div>
     </article>`;
@@ -130,6 +150,56 @@ export function renderFilterBar() {
 }
 
 // ── Modal ─────────────────────────────────────────────────────────────────
+
+/** Returns the cart control HTML for the modal (add button or qty counter). */
+function modalCartControl(product) {
+  const key = String(product.id);
+  const qty = Cart_State[key]?.qty ?? 0;
+  const atMax = qty >= product.stock_amount;
+  if (qty > 0) {
+    return `<div class="modal-qty-control">
+      <button class="modal-qty-btn" id="modal-dec-btn" ${qty <= 1 ? 'disabled' : ''}>−</button>
+      <span class="modal-qty-value">${qty}</span>
+      <button class="modal-qty-btn" id="modal-inc-btn" ${atMax ? 'disabled' : ''}>+</button>
+      <button class="modal-remove-btn" id="modal-remove-btn" title="Remove from cart">🗙</button>
+    </div>`;
+  }
+  return `<button class="modal-add-btn" data-id="${product.id}">Add to Cart</button>`;
+}
+
+/** Wires the cart buttons inside the open modal for a given product. */
+function wireModalCartButtons(product) {
+  const content = document.getElementById('modal-content');
+  if (!content) return;
+  const addBtn = content.querySelector('.modal-add-btn');
+  if (addBtn) {
+    addBtn.addEventListener('click', () => {
+      addToCart(product.id);
+      refreshModalCartControl(product);
+    });
+  }
+  const incBtn = content.querySelector('#modal-inc-btn');
+  const decBtn = content.querySelector('#modal-dec-btn');
+  if (incBtn) incBtn.addEventListener('click', () => { addToCart(product.id); refreshModalCartControl(product); });
+  if (decBtn) decBtn.addEventListener('click', () => { removeFromCart(product.id); refreshModalCartControl(product); });
+  const removeBtn = content.querySelector('#modal-remove-btn');
+  if (removeBtn) removeBtn.addEventListener('click', () => { deleteFromCart(product.id); closeModal(); });
+}
+
+/** Replaces just the cart control area in the open modal without re-rendering everything. */
+function refreshModalCartControl(product) {
+  const content = document.getElementById('modal-content');
+  if (!content) return;
+  const existing = content.querySelector('.modal-qty-control, .modal-add-btn');
+  if (existing) {
+    const temp = document.createElement('div');
+    temp.innerHTML = modalCartControl(product);
+    existing.replaceWith(temp.firstElementChild);
+    wireModalCartButtons(product);
+  }
+  renderCatalog(); // keep cards in sync
+}
+
 /**
  * Opens the modal and populates it with the given product's details.
  * @param {Object} product
@@ -155,7 +225,7 @@ export function openModal(product) {
     <div class="modal-description">${product.description}</div>
     <div class="modal-meta">Colours: <span>${product.colours.join(', ')}</span></div>
     <div class="modal-meta">In stock: <span>${product.stock_amount}</span></div>
-    <button class="modal-add-btn" data-id="${product.id}">Add to Cart</button>`;
+    ${modalCartControl(product)}`;
 
   overlay.classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -163,10 +233,7 @@ export function openModal(product) {
   // Wire close button
   document.getElementById('modal-close-btn').addEventListener('click', closeModal);
 
-  // Wire modal add-to-cart
-  content.querySelector('.modal-add-btn').addEventListener('click', () => {
-    addToCart(product.id);
-  });
+  wireModalCartButtons(product);
 
   // Trap focus: collect focusable elements
   const focusable = content.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
@@ -219,7 +286,7 @@ export function addToCart(productId) {
 
   const key = String(productId);
   if (Cart_State[key]) {
-    if (Cart_State[key].qty >= product.stock_amount) return; // stock cap
+    if (Cart_State[key].qty >= product.stock_amount) return;
     Cart_State[key].qty += 1;
   } else {
     Cart_State[key] = { product, qty: 1 };
@@ -228,6 +295,33 @@ export function addToCart(productId) {
   saveCart();
   updateBadge();
   updateCartButtonVisibility();
+  renderCatalog();
+}
+
+/** Decrements qty for a product; removes it if qty reaches 0. */
+export function removeFromCart(productId) {
+  const key = String(productId);
+  if (!Cart_State[key]) return;
+  if (Cart_State[key].qty > 1) {
+    Cart_State[key].qty -= 1;
+  } else {
+    delete Cart_State[key];
+  }
+  saveCart();
+  updateBadge();
+  updateCartButtonVisibility();
+  renderCatalog();
+}
+
+/** Removes a product from Cart_State entirely, regardless of qty. */
+export function deleteFromCart(productId) {
+  const key = String(productId);
+  if (!Cart_State[key]) return;
+  delete Cart_State[key];
+  saveCart();
+  updateBadge();
+  updateCartButtonVisibility();
+  renderCatalog();
 }
 
 // ── Cart button visibility ────────────────────────────────────────────────
